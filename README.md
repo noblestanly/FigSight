@@ -27,7 +27,6 @@ FigSight is a lightweight SaaS platform that transforms messy Excel sheets into 
 ---
 
 ## 📂 Repository Structure
-```
 
 figsight/
 │── backend/                 # Django backend
