@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Columns</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/select_columns.js' %}" defer></script>
+  <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+</head>
+<body>
+    <header>
+        <div class="container header">
+            <!-- Logo always links to home -->
+            <a href="/" class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="FigSight Logo">
+            </a>
+
+            <!-- Navigation only on index page -->
+            {% if request.path == "/" %}
+            <nav>
+                <a href="#about">About</a>
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            {% endif %}
+        </div>
+    </header>
+  <div class="container">
+    <h1>Select Columns</h1>
+
+    <!-- Filter Columns -->
+    <div class="card">
+      <h3>Filter Columns</h3>
+      <form id="filterColumnsForm"></form>
+    </div>
+
+    <!-- Graph Config -->
+    <div class="card">
+      <h3>Graph Configuration</h3>
+      <label for="chartType">Chart Type:</label>
+      <select id="chartType">
+        <option value="bar">Bar</option>
+        <option value="line">Line</option>
+        <option value="pie">Pie</option>
+      </select>
+
+      <div id="graphOptions"></div>
+    </div>
+
+    <button id="proceedBtn">Proceed to Dashboard</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FigSight Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'js/dashboard.js' %}" defer></script>
+  <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+</head>
+<body>
+    <header>
+        <div class="container header">
+            <!-- Logo always links to home -->
+            <a href="/" class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="FigSight Logo">
+            </a>
+
+            <!-- Navigation only on index page -->
+            {% if request.path == "/" %}
+            <nav>
+                <a href="#about">About</a>
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            {% endif %}
+        </div>
+    </header>
+
+  <div class="container">
+    <div class="logo">
+      <img src="{% static 'img/logo.png' %}" alt="FigSight Logo">
+    </div>
+    <h1 class="title">📊 Dashboard</h1>
+    <p class="subtitle">Apply filters and visualize your data.</p>
+
+    <!-- Filter Section -->
+    <div id="filters" class="card">
+      <h3>Filters</h3>
+      <form id="filterForm"></form>
+    </div>
+
+    <!-- Chart Section -->
+    <div id="chartCard" class="card">
+        <h3>Visualization</h3>
+        <canvas id="chart" style="max-width:600px; max-height:400px;"></canvas>
+    </div>
+
+
+    <!-- Data Table -->
+    <div class="card">
+      <h3>Data Table</h3>
+      <table id="dataTable"></table>
+    </div>
+  </div>
+</body>
+</html>

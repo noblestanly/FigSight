@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FigSight - Data Insights Made Simple</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/upload.js' %}" defer></script>
+  <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header">
+      <div class="logo">
+        <img src="{% static 'img/logo.png' %}" alt="FigSight Logo">
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Upload -->
+    <section class="hero" id="getstarted">
+    <div class="hero-overlay">
+        <div class="container">
+        <h1>Turn Spreadsheets into Insights</h1>
+        <p>Upload your data and let FigSight give you powerful visualizations instantly.</p>
+
+        <!-- Upload Form -->
+        <form id="uploadForm" enctype="multipart/form-data" method="POST" class="upload-form">
+            {% csrf_token %}
+
+            <!-- Hidden input -->
+            <input type="file" id="fileInput" name="file" accept=".csv,.xlsx" required>
+
+            <!-- Styled buttons -->
+            <label for="fileInput" class="btn btn-green">📂 Choose File</label>
+            <button type="submit" class="btn btn-blue">🚀 Analyze Data</button>
+        </form>
+        <div id="uploadResult"></div>
+    </div>
+    </section>
+
+
+  <!-- About Section -->
+    <section id="about" class="about">
+    <div class="container">
+        <h2>About FigSight</h2>
+        <p>
+        FigSight is your smart companion for turning raw spreadsheets into clear, interactive insights. 
+        Whether you’re a business owner, analyst, or student, FigSight helps you make sense of data 
+        without the need for coding or complex tools.
+        </p>
+        <p>
+        Upload your Excel or CSV files and instantly get AI-powered filters, customizable charts, and 
+        interactive dashboards that let you explore your data in new ways. From identifying trends to 
+        comparing categories, FigSight makes analysis effortless and intuitive.
+        </p>
+        <p>
+        Unlike traditional BI tools, FigSight is designed to be simple and lightweight. 
+        No steep learning curve, no expensive setup—just fast insights at your fingertips. 
+        Whether you need a quick report or want to explore complex datasets, 
+        FigSight adapts to your needs.
+        </p>
+    </div>
+    </section>
+
+
+  <!-- Plans Section -->
+  <section id="plans" class="plans">
+    <div class="container">
+      <h2>Our Plans</h2>
+      <div class="plan-cards">
+        <div class="plan">
+          <h3>Free</h3>
+          <ul>
+            <li>✔ Upload 1 file at a time</li>
+            <li>✔ Basic filters</li>
+            <li>✔ Limited charts (Bar & Pie)</li>
+            <li>✘ No data export</li>
+            <li>✘ No team sharing</li>
+          </ul>
+          <p><b>$0/month</b></p>
+        </div>
+        <div class="plan">
+          <h3>Pro</h3>
+          <ul>
+            <li>✔ Upload multiple files</li>
+            <li>✔ Advanced filters</li>
+            <li>✔ All chart types (Bar, Pie, Line)</li>
+            <li>✔ Export to Excel/PDF</li>
+            <li>✘ Limited to single user</li>
+          </ul>
+          <p><b>$9.99/month</b></p>
+        </div>
+        <div class="plan">
+          <h3>Enterprise</h3>
+          <ul>
+            <li>✔ Unlimited uploads</li>
+            <li>✔ AI-powered insights</li>
+            <li>✔ Team collaboration & sharing</li>
+            <li>✔ Dedicated support</li>
+            <li>✔ Custom integrations</li>
+          </ul>
+          <p><b>Contact Us</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; {{ now.year }} FigSight. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

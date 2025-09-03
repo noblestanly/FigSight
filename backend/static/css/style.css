@@ -1,0 +1,255 @@
+/* ===========================
+   Global Styles
+=========================== */
+:root {
+    --header-height: 70px;
+}
+
+html {
+    scroll-padding-top: var(--header-height);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ===========================
+   Header
+=========================== */
+header {
+    background: #4e79a7;
+    color: #fff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+header .logo img {
+    height: 70px; /* scale rectangular logo */
+    width: auto;
+    object-fit: contain;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================
+   Hero Section
+=========================== */
+.hero {
+    position: relative;
+    height: 500px; /* adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+
+    /* Background image */
+    background: url("../img/banner.jpg") no-repeat center center/cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.55); /* shading */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero form {
+    margin-top: 15px;
+}
+
+/* ===========================
+   Upload Form
+=========================== */
+.upload-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Hide actual file input */
+#fileInput {
+    display: none;
+}
+
+/* Base button style */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1em;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+}
+
+/* Variants */
+/* Green button for upload */
+.btn-green {
+    background: #59a14f;
+    color: #fff;
+}
+.btn-green:hover {
+    background: #3e7a39;
+    color: #fff;
+}
+
+/* Blue button for analyze (already defined) */
+.btn-blue {
+    background: #4e79a7;
+    color: #fff;
+}
+.btn-blue:hover {
+    background: #37608c;
+}
+
+
+/* Upload result message */
+#uploadResult {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* ===========================
+   About Section
+=========================== */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* ===========================
+   Plans Section
+=========================== */
+.plans {
+    background: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.plan-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.plan {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.plan h3 {
+    margin-top: 0;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plan ul li {
+    margin: 5px 0;
+}
+
+/* ===========================
+   Contact Section
+=========================== */
+.contact {
+    padding: 60px 20px;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact input,
+.contact textarea {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.contact button {
+    background: #4e79a7;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background: #37608c;
+}
+
+/* ===========================
+   Footer
+=========================== */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
