@@ -31,7 +31,20 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="index.html"), name="home"),
     path("select-columns/", TemplateView.as_view(template_name="select_columns.html"), name="select_columns"),
     path("dashboard/", TemplateView.as_view(template_name="dashboard.html"), name="dashboard"),
+
+    # SEO essentials
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+        name="robots_txt",
+    ),
+    path(
+        "sitemap.xml",
+        TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml"),
+        name="sitemap_xml",
+    ),
 ]
+
 
 
 
