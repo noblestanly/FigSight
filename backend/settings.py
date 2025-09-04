@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2rzf%a0y3^2x-hf_0n0skn+ez@=e%4nw!4sk_n9t0h)jz=_0(q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "figsight.onrender.com"]
 
 
 # Application definition
