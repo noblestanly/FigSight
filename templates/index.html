@@ -2,18 +2,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>FigSight - Data Insights Made Simple</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Turn spreadsheets into clear, interactive insights. Upload a CSV or Excel file and FigSight instantly builds charts and dashboards—no code needed." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://figsight.in/" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="FigSight" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FigSight - Data Insights Made Simple" />
+  <meta property="og:description" content="Upload your data and get instant visual insights with AI-powered charts and dashboards." />
+  <meta property="og:url" content="https://figsight.in/" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-cover.jpg' %}" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FigSight - Data Insights Made Simple" />
+  <meta name="twitter:description" content="Upload your data and get instant visual insights with AI-powered charts and dashboards." />
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-cover.jpg' %}" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}" />
+
+  <!-- CSS / JS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <script src="{% static 'js/upload.js' %}" defer></script>
-  <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
 </head>
 <body>
   <!-- Header -->
   <header>
-    <div class="container header">
+    <div class="container header" role="navigation" aria-label="Primary">
       <div class="logo">
-        <img src="{% static 'img/logo.png' %}" alt="FigSight Logo">
+        <a href="/" aria-label="FigSight Home">
+          <img src="{% static 'img/logo.png' %}" alt="FigSight Logo" width="160" height="40" />
+        </a>
       </div>
       <nav>
         <a href="#about">About</a>
@@ -24,69 +48,61 @@
   </header>
 
   <!-- Hero / Upload -->
-    <section class="hero" id="getstarted">
+  <section class="hero" id="getstarted">
     <div class="hero-overlay">
-        <div class="container">
+      <div class="container">
         <h1>Turn Spreadsheets into Insights</h1>
         <p>Upload your data and let FigSight give you powerful visualizations instantly.</p>
 
         <!-- Upload Form -->
         <form id="uploadForm" enctype="multipart/form-data" method="POST" class="upload-form">
-            {% csrf_token %}
-
-            <!-- Hidden input -->
-            <input type="file" id="fileInput" name="file" accept=".csv,.xlsx" required>
-
-            <!-- Styled buttons -->
-            <label for="fileInput" class="btn btn-green">📂 Choose File</label>
-            <button type="submit" class="btn btn-blue">🚀 Analyze Data</button>
+          {% csrf_token %}
+          <input type="file" id="fileInput" name="file" accept=".csv,.xlsx" required />
+          <label for="fileInput" class="btn btn-green">📂 Choose File</label>
+          <button type="submit" class="btn btn-blue">🚀 Analyze Data</button>
         </form>
         <div id="uploadResult"></div>
+      </div>
     </div>
-    </section>
-
+  </section>
 
   <!-- About Section -->
-    <section id="about" class="about">
+  <section id="about" class="about">
     <div class="container">
-        <h2>About FigSight</h2>
-        <p>
+      <h2>About FigSight</h2>
+      <p>
         FigSight is your smart companion for turning raw spreadsheets into clear, interactive insights. 
         Whether you’re a business owner, analyst, or student, FigSight helps you make sense of data 
         without the need for coding or complex tools.
-        </p>
-        <p>
+      </p>
+      <p>
         Upload your Excel or CSV files and instantly get AI-powered filters, customizable charts, and 
-        interactive dashboards that let you explore your data in new ways. From identifying trends to 
-        comparing categories, FigSight makes analysis effortless and intuitive.
-        </p>
-        <p>
+        interactive dashboards that let you explore your data in new ways.
+      </p>
+      <p>
         Unlike traditional BI tools, FigSight is designed to be simple and lightweight. 
         No steep learning curve, no expensive setup—just fast insights at your fingertips. 
-        Whether you need a quick report or want to explore complex datasets, 
-        FigSight adapts to your needs.
-        </p>
+      </p>
     </div>
-    </section>
-
+  </section>
 
   <!-- Plans Section -->
   <section id="plans" class="plans">
     <div class="container">
       <h2>Our Plans</h2>
-      <div class="plan-cards">
-        <div class="plan">
+      <div class="plan-cards" role="list">
+        <div class="plan" role="listitem">
           <h3>Free</h3>
           <ul>
             <li>✔ Upload 1 file at a time</li>
             <li>✔ Basic filters</li>
-            <li>✔ Limited charts (Bar & Pie)</li>
+            <li>✔ Limited charts (Bar &amp; Pie)</li>
             <li>✘ No data export</li>
             <li>✘ No team sharing</li>
           </ul>
           <p><b>$0/month</b></p>
         </div>
-        <div class="plan">
+        <div class="plan" role="listitem">
           <h3>Pro</h3>
           <ul>
             <li>✔ Upload multiple files</li>
@@ -97,16 +113,16 @@
           </ul>
           <p><b>$9.99/month</b></p>
         </div>
-        <div class="plan">
+        <div class="plan" role="listitem">
           <h3>Enterprise</h3>
           <ul>
             <li>✔ Unlimited uploads</li>
             <li>✔ AI-powered insights</li>
-            <li>✔ Team collaboration & sharing</li>
+            <li>✔ Team collaboration &amp; sharing</li>
             <li>✔ Dedicated support</li>
             <li>✔ Custom integrations</li>
           </ul>
-          <p><b>Contact Us</b></p>
+          <p><b><a href="https://www.linkedin.com/company/figsight" target="_blank" rel="noopener">Contact Us</a></b></p>
         </div>
       </div>
     </div>
@@ -116,12 +132,10 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <p>
+        For inquiries, reach out to us on  
+        <a href="https://www.linkedin.com/company/figsight" target="_blank" rel="noopener">LinkedIn</a>.
+      </p>
     </div>
   </section>
 
