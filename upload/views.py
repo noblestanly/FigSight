@@ -6,8 +6,13 @@ from backend.utils import df_to_json_safe
 @api_view(["POST"])
 def upload_api(request):
     file = request.FILES.get("file")
+    MAX_BYTES = 3 * 1024 * 1024
+    file = request.FILES.get("file")
     if not file:
         return Response({"error": "No file uploaded"}, status=400)
+    if file.size > MAX_BYTES:
+        return Response({"error": "File too large. Max 3 MB."}, status=413)
+
 
     df = pd.read_excel(file) if file.name.endswith(".xlsx") else pd.read_csv(file)
 

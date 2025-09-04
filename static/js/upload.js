@@ -1,30 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("uploadForm");
-    const resultDiv = document.getElementById("uploadResult"); // 👈 define this
+  const form = document.getElementById("uploadForm");
+  const fileInput = document.getElementById("fileInput");
+  const chooseBtn = document.querySelector('label[for="fileInput"]');
+  const analyzeBtn = form.querySelector("button[type=submit]");
+  const resultDiv = document.getElementById("uploadResult");
+  const MAX_BYTES = 3 * 1024 * 1024; // 3MB
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  // start with disabled analyze until file is picked
+  analyzeBtn.disabled = true;
 
-        const formData = new FormData(form);
+  fileInput.addEventListener("change", () => {
+    resultDiv.textContent = "";
+    const f = fileInput.files[0];
+    if (!f) { analyzeBtn.disabled = true; return; }
+    if (f.size > MAX_BYTES) {
+      resultDiv.textContent = "❌ File too large. Max 3 MB.";
+      fileInput.value = "";
+      analyzeBtn.disabled = true;
+      return;
+    }
+    analyzeBtn.disabled = false; // file ok; allow submit
+  });
 
-        try {
-            const res = await fetch("/api/upload/", {
-                method: "POST",
-                body: formData,
-            });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = fileInput.files[0];
+    if (!f) return;
 
-            const data = await res.json();
+    // safety check again
+    if (f.size > MAX_BYTES) {
+      resultDiv.textContent = "❌ File too large. Max 3 MB.";
+      return;
+    }
 
-            if (data.error) {
-                resultDiv.innerText = "❌ " + data.error;
-            } else {
-                resultDiv.innerText = "✅ File uploaded!";
-                // Save columns for filter selection page
-                localStorage.setItem("columns", JSON.stringify(data.columns));
-                window.location.href = "/select-columns/";
-            }
-        } catch (err) {
-            resultDiv.innerText = "❌ Upload failed: " + err.message;
-        }
-    });
+    // show loader & disable buttons
+    showLoader("Uploading file…");
+    analyzeBtn.disabled = true;
+    chooseBtn.classList.add("disabled");
+
+    const formData = new FormData(form);
+    const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    try {
+      const res = await fetch("/api/upload/", {
+        method: "POST",
+        headers: { "X-CSRFToken": csrf },
+        body: formData
+      });
+      const data = await res.json();
+      if (data.error) {
+        resultDiv.textContent = "❌ " + data.error;
+        analyzeBtn.disabled = false; // allow retry
+        return;
+      }
+      resultDiv.textContent = "✅ File uploaded!";
+      localStorage.setItem("columns", JSON.stringify(data.columns));
+      hideLoader();
+      // enable proceed button on next page; or redirect right away:
+      window.location.href = "/select-columns/";
+    } catch (err) {
+      resultDiv.textContent = "❌ Upload failed: " + err.message;
+    } finally {
+      hideLoader();
+    }
+  });
 });
+
+function showLoader(text) {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+  loader.querySelector(".loader-text").textContent = text || "Loading…";
+  loader.classList.remove("hidden");
+}
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+  loader.classList.add("hidden");
+}

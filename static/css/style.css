@@ -1,10 +1,17 @@
-/* ===========================
-   Global Styles
-=========================== */
-:root {
-    --header-height: 70px;
+/* =========================================================
+   Base / Reset
+========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+:root {
+    --header-height: 70px; /* existing var preserved */
+}
+
+/* Document */
 html {
     scroll-padding-top: var(--header-height);
     scroll-behavior: smooth;
@@ -17,28 +24,42 @@ body {
     color: #333;
 }
 
+/* Containers */
 .container {
     width: 90%;
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
 }
 
-/* ===========================
+/* Accessible focus (kept generic; no renames) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.chip:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid #4e79a7;
+    outline-offset: 2px;
+}
+
+/* =========================================================
    Header
-=========================== */
+========================================================= */
 header {
-    background: #4e79a7;
-    color: #fff;
-    padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    background: #4e79a7;
+    color: #fff;
+    padding: 10px 0;
 }
 
 header .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 header .logo {
@@ -55,64 +76,64 @@ header .logo img {
 
 header nav a {
     color: #fff;
-    margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
+    margin: 0 15px;
 }
 
 header nav a:hover {
     text-decoration: underline;
 }
 
-/* ===========================
+/* =========================================================
    Hero Section
-=========================== */
+========================================================= */
 .hero {
     position: relative;
-    height: 500px; /* adjust as needed */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+
+    height: 500px; /* adjust as needed */
+    color: #fff;
     text-align: center;
 
     /* Background image */
-    background: url("../img/banner.jpg") no-repeat center center/cover;
+    background: url("../img/banner.jpg") no-repeat center center / cover;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.55); /* shading */
+    inset: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55); /* shading */
 }
 
 .hero h1 {
     font-size: 2.5em;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
 }
 
 .hero p {
     font-size: 1.2em;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
 .hero form {
     margin-top: 15px;
 }
 
-/* ===========================
+/* =========================================================
    Upload Form
-=========================== */
+========================================================= */
 .upload-form {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
 }
@@ -122,22 +143,31 @@ header nav a:hover {
     display: none;
 }
 
-/* Base button style */
+/* Upload result message */
+#uploadResult {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* =========================================================
+   Buttons (Base + Variants)
+========================================================= */
 .btn {
     display: inline-block;
     padding: 12px 25px;
+    border: none;
     border-radius: 6px;
+
+    font-size: 1em;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+
     cursor: pointer;
     transition: background 0.3s;
-    font-size: 1em;
-    text-align: center;
-    border: none;
-    text-decoration: none;
 }
 
-/* Variants */
-/* Green button for upload */
+/* Green (upload) */
 .btn-green {
     background: #59a14f;
     color: #fff;
@@ -147,7 +177,7 @@ header nav a:hover {
     color: #fff;
 }
 
-/* Blue button for analyze (already defined) */
+/* Blue (analyze) */
 .btn-blue {
     background: #4e79a7;
     color: #fff;
@@ -156,52 +186,47 @@ header nav a:hover {
     background: #37608c;
 }
 
-
-/* Upload result message */
-#uploadResult {
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-/* ===========================
+/* =========================================================
    About Section
-=========================== */
+========================================================= */
 .about {
     padding: 60px 20px;
     text-align: center;
 }
 
-/* ===========================
+/* =========================================================
    Plans Section
-=========================== */
+========================================================= */
 .plans {
-    background: #f4f4f4;
     padding: 60px 20px;
     text-align: center;
+    background: #f4f4f4;
 }
 
 .plan-cards {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
     flex-wrap: wrap;
+    gap: 20px;            /* ensures consistent gaps */
+    margin-top: 20px;
 }
 
 .plan {
-    background: white;
+    flex: 1 1 260px;      /* responsive cards */
+    background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    flex: 1;
     margin: 10px;
+    border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .plan h3 {
-    margin-top: 0;
+    margin: 0 0 10px;
 }
 
 .plan ul {
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
@@ -209,26 +234,26 @@ header nav a:hover {
     margin: 5px 0;
 }
 
-/* ===========================
+/* =========================================================
    Contact Section
-=========================== */
+========================================================= */
 .contact {
     padding: 60px 20px;
 }
 
 .contact form {
-    max-width: 500px;
-    margin: auto;
     display: flex;
     flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .contact input,
 .contact textarea {
-    margin: 10px 0;
     padding: 10px;
-    border-radius: 6px;
+    margin: 10px 0;
     border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 .contact button {
@@ -244,12 +269,206 @@ header nav a:hover {
     background: #37608c;
 }
 
-/* ===========================
+/* =========================================================
    Footer
-=========================== */
+========================================================= */
 footer {
-    background: #333;
-    color: white;
     text-align: center;
+    color: #fff;
+    background: #333;
     padding: 15px 0;
+}
+
+/* =========================================================
+   Page Titles / Shared UI
+========================================================= */
+.page-title {
+    margin: 24px 0 12px;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.label {
+    display: block;
+    margin: 8px 0 6px;
+    font-weight: 600;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 18px 0 40px;
+}
+
+/* =========================================================
+   Filters / Chips
+========================================================= */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.chip input {
+    accent-color: #4e79a7;
+}
+
+.filters select {
+    padding: 8px;
+    margin: 6px 8px 6px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* =========================================================
+   Cards
+========================================================= */
+.card {
+    background: #fff;
+    padding: 20px;
+    margin: 16px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* =========================================================
+   Charts
+========================================================= */
+.chart-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#chart {
+    max-width: 800px;
+    max-height: 420px;
+}
+
+/* =========================================================
+   Tables
+========================================================= */
+.table-wrap {
+    overflow: auto;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #eee;
+}
+
+#dataTable th {
+    position: sticky;
+    top: 0;
+    background: #4e79a7;
+    color: #fff;
+}
+
+#dataTable tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+/* =========================================================
+   Loader Overlay
+========================================================= */
+.loader {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: rgba(0,0,0,0.35);
+}
+
+.loader.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #fff;
+    border-top-color: #4e79a7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    color: #fff;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Reduced-motion respectful (kept class names intact) */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+    .spinner { animation: none; }
+}
+
+/* =========================================================
+   Responsive Tweaks
+========================================================= */
+@media (max-width: 900px) {
+    .hero { height: 420px; }
+    .hero h1 { font-size: 2.1em; }
+    .hero p { font-size: 1.05em; }
+}
+
+@media (max-width: 700px) {
+    header .header { padding: 0 12px; }
+    header nav a { margin: 0 10px; }
+
+    .grid-2 { grid-template-columns: 1fr; }
+
+    .plan-cards {
+        justify-content: center;
+    }
+
+    .plan {
+        flex: 1 1 320px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero { height: 360px; }
+    .btn { padding: 10px 18px; }
+    .container { width: 92%; }
 }
