@@ -25,6 +25,9 @@
 
   <!-- Icons -->
   <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-bx3rO9u4TnJ0l9ZwC1d6q8rY4VjvPjq7HNoaPc2a6+N0Bp8HyrC4fnqDg7ZL6hwnr4qgyq0IzsB4K6aFJwWc0A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- CSS / JS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -39,13 +42,24 @@
           <img src="{% static 'img/logo.png' %}" alt="FigSight Logo" width="160" height="40" />
         </a>
       </div>
-      <nav>
+
+      <!-- Hamburger button (visible on small screens) -->
+      <button class="nav-toggle" id="navToggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger">
+          <span class="bar bar1"></span>
+          <span class="bar bar2"></span>
+          <span class="bar bar3"></span>
+        </span>
+      </button>
+
+      <nav id="primaryNav" class="primary-nav">
         <a href="#about">About</a>
         <a href="#plans">Plans</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
+
 
   <!-- Hero / Upload -->
   <section class="hero" id="getstarted">
@@ -122,28 +136,63 @@
             <li>✔ Dedicated support</li>
             <li>✔ Custom integrations</li>
           </ul>
-          <p><b><a href="https://www.linkedin.com/company/figsight" target="_blank" rel="noopener">Contact Us</a></b></p>
+          <!-- Changed from external link to internal nav link -->
+          <p><b><a href="#contact">Contact Us</a></b></p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <p>
-        For inquiries, reach out to us on  
-        <a href="https://www.linkedin.com/company/figsight" target="_blank" rel="noopener">LinkedIn</a>.
-      </p>
+        <div class="contact-links">
+          <!-- Email -->
+          <a href="mailto:contact@figsight.in" class="email" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11zM4.5 6a.5.5 0 0 0-.5.5V8l8 4.9L20 8V6.5a.5.5 0 0 0-.5-.5h-15z"/>
+            </svg>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/company/figsight" class="linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M4.98 3.5C4.98 4.6 4.06 5.5 2.95 5.5S0.92 4.6.92 3.5 1.84 1.5 2.95 1.5 4.98 2.4 4.98 3.5zM.73 8.5h4.44V23H.73V8.5zM8.83 8.5h4.26v1.98h.06c.59-1.12 2.03-2.29 4.18-2.29 4.47 0 5.29 2.95 5.29 6.79V23h-4.44v-6.75c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V23H8.83V8.5z"/>
+            </svg>
+          </a>
+        </div>
     </div>
   </section>
 
-  <!-- Footer -->
+
+
+  <!-- Footer Section -->
   <footer>
     <div class="container">
       <p>&copy; {{ now.year }} FigSight. All rights reserved.</p>
+
+      <div class="footer-icons">
+        <!-- Email -->
+        <a href="mailto:contact@figsight.in" class="email" aria-label="Email contact@figsight.in">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11zM4.5 6a.5.5 0 0 0-.5.5V8l8 4.9L20 8V6.5a.5.5 0 0 0-.5-.5h-15z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/figsight" class="linkedin" target="_blank" rel="noopener" aria-label="FigSight LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M4.98 3.5C4.98 4.6 4.06 5.5 2.95 5.5S0.92 4.6.92 3.5 1.84 1.5 2.95 1.5 4.98 2.4 4.98 3.5zM.73 8.5h4.44V23H.73V8.5zM8.83 8.5h4.26v1.98h.06c.59-1.12 2.03-2.29 4.18-2.29 4.47 0 5.29 2.95 5.29 6.79V23h-4.44v-6.75c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V23H8.83V8.5z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </footer>
+
+
+
+
 </body>
 </html>

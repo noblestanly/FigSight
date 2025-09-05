@@ -77,3 +77,38 @@ function hideLoader() {
   if (!loader) return;
   loader.classList.add("hidden");
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('navToggle');
+  const container = document.querySelector('header .container');
+
+  if (!toggle || !container) return;
+
+  toggle.addEventListener('click', function () {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    toggle.classList.toggle('open');
+
+    // add/remove nav-open on container so CSS can show/hide the nav panel
+    container.classList.toggle('nav-open');
+  });
+
+  // close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!container.classList.contains('nav-open')) return;
+    if (container.contains(e.target)) return; // click inside
+    container.classList.remove('nav-open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && container.classList.contains('nav-open')) {
+      container.classList.remove('nav-open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  });
+});

@@ -85,6 +85,97 @@ header nav a:hover {
     text-decoration: underline;
 }
 
+/* -------------------------
+   Responsive nav (hamburger)
+   ------------------------- */
+
+/* hide toggle on large screens */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 12px;
+}
+
+/* hamburger bars */
+.hamburger {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+    position: relative;
+}
+.hamburger .bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.hamburger .bar1 { top: 0; }
+.hamburger .bar2 { top: 50%; transform: translateY(-50%); }
+.hamburger .bar3 { bottom: 0; }
+
+/* transform to "X" when open (toggle class .open applied by JS) */
+.nav-toggle.open .bar1 { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open .bar2 { opacity: 0; }
+.nav-toggle.open .bar3 { transform: translateY(-8px) rotate(-45deg); }
+
+/* primary nav default layout */
+.primary-nav {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+/* small-screen behaviour */
+@media (max-width: 820px) {
+    /* show hamburger */
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* hide desktop nav by default on small screens, show only when .nav-open set on header.container */
+    .primary-nav {
+        position: absolute;
+        top: calc(var(--header-height) + 8px);
+        right: 12px;
+        background: #4e79a7;
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        display: none;
+        min-width: 160px;
+        z-index: 1001;
+    }
+
+    /* show nav when header gets .nav-open */
+    .container.nav-open .primary-nav {
+        display: flex;
+    }
+
+    /* nav links inside panel */
+    .primary-nav a {
+        color: #fff;
+        padding: 6px 10px;
+        text-decoration: none;
+    }
+}
+
+/* ensure header .header uses position:relative so absolute nav panel positions correctly */
+header .container {
+    position: relative;
+}
+
 /* =========================================================
    Hero Section
 ========================================================= */
@@ -234,18 +325,41 @@ header nav a:hover {
     margin: 5px 0;
 }
 
+/* --------------
+   Plan cards stack
+   -------------- */
+/* stronger stacking for phones (ensures single column) */
+@media (max-width: 700px) {
+    .plan-cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .plan {
+        width: 100%;
+        max-width: none;
+        margin: 8px 0;
+    }
+}
+
 /* =========================================================
    Contact Section
 ========================================================= */
 .contact {
     padding: 60px 20px;
+    text-align: center; /* Center heading + icons */
 }
 
+.contact h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Existing form styles */
 .contact form {
     display: flex;
     flex-direction: column;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .contact input,
@@ -269,6 +383,48 @@ header nav a:hover {
     background: #37608c;
 }
 
+/* ===== Icon links ===== */
+.contact-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-links a svg {
+    width: 26px;
+    height: 26px;
+    fill: #333;
+}
+
+/* Specific colors */
+.contact-links a.email svg {
+    fill: #333;
+}
+
+.contact-links a.linkedin svg {
+    fill: #0A66C2;
+}
+
+/* Hover effect */
+.contact-links a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
 /* =========================================================
    Footer
 ========================================================= */
@@ -278,6 +434,46 @@ footer {
     background: #333;
     padding: 15px 0;
 }
+
+/* footer icons container */
+.footer-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* icon links */
+.footer-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #444; /* slightly lighter than footer bg */
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* icon svg */
+.footer-icons a svg {
+    width: 22px;
+    height: 22px;
+    fill: #fff; /* default white */
+}
+
+/* specific colors on hover */
+.footer-icons a.email:hover {
+    background: #555;
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.footer-icons a.linkedin:hover {
+    background: #0A66C2;
+    box-shadow: 0 0 8px rgba(10,102,194,0.6);
+}
+
 
 /* =========================================================
    Page Titles / Shared UI
