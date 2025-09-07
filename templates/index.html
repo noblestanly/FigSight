@@ -28,9 +28,10 @@
   <link rel="apple-touch-icon" href="{% static 'img/favicon.png' %}" />
   <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-    integrity="sha512-bx3rO9u4TnJ0l9ZwC1d6q8rY4VjvPjq7HNoaPc2a6+N0Bp8HyrC4fnqDg7ZL6hwnr4qgyq0IzsB4K6aFJwWc0A==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
   <!-- CSS / JS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -59,6 +60,7 @@
         <a href="#about">About</a>
         <a href="#plans">Plans</a>
         <a href="#contact">Contact</a>
+        <a href="#blogs">Blogs</a>
       </nav>
     </div>
   </header>
@@ -142,6 +144,124 @@
           <!-- Changed from external link to internal nav link -->
           <p><b><a href="#contact">Contact Us</a></b></p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="grid-section" id="blogs">
+    <div class="container">
+      <h2 class="section-title">Latest Insights</h2>
+      <div class="grid">
+        <!-- Blog card 1 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog1-placeholder.jpg' %}" alt="Why Data Visualization is Key for Smarter Decisions" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2>
+              <a href="blog1.html">Why Data Visualization is Key for Smarter Decisions</a>
+            </h2>
+            <p class="excerpt">
+              Numbers alone can be confusing. Data visualization turns them into clear, actionable insights. 
+              Charts and dashboards reveal trends, risks, and opportunities at a glance—helping teams make smarter decisions faster. 
+              Discover why visuals are the real driver of clarity.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog1.html">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog card 2 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog2-placeholder.jpg' %}" alt="Top 5 Mistakes Businesses Make with Analytics" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2><a href="blog2.html">Top 5 Mistakes Businesses Make with Analytics</a></h2>
+            <p class="excerpt">
+              Many businesses misuse analytics—tracking vanity metrics, ignoring context, or collecting too much data without direction. 
+              These mistakes waste time and blur insights. 
+              Learn the top five pitfalls and how to avoid them.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog2.html">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog card 3 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog3-placeholder.jpg' %}" alt="How Small Businesses Can Use Data Like Big Enterprises" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2><a href="blog3.html">How Small Businesses Can Use Data Like Big Enterprises</a></h2>
+            <p class="excerpt">
+              Big companies aren’t the only ones who benefit from data. 
+              Small businesses can unlock growth by tracking sales trends, customer habits, and performance—even with simple tools. 
+              See how to start using data like an enterprise, today.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog3.html">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog card 4 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog4-placeholder.jpg' %}" alt="Beginner’s Guide to Data-Driven Marketing" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2><a href="blog4.html">Beginner’s Guide to Data-Driven Marketing</a></h2>
+            <p class="excerpt">
+              Guesswork in marketing rarely works. 
+              Data-driven strategies help target the right audience, choose winning campaigns, and measure real impact. 
+              This guide shows beginners how to make marketing smarter with simple metrics.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog4.html">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog card 5 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog5-placeholder.jpg' %}" alt="AI in Analytics: Future of Business Insights" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2><a href="blog5.html">AI in Analytics: Future of Business Insights</a></h2>
+            <p class="excerpt">
+              AI is changing analytics from slow and complex to fast and predictive. 
+              From trend forecasts to automated reports, AI makes insights accessible to everyone. 
+              Discover practical ways AI can power your business decisions.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog5.html">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog card 6 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="{% static 'img/blog6-placeholder.jpg' %}" alt="Why Every Business Needs a Dashboard (and How to Start)" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h2><a href="blog6.html">Why Every Business Needs a Dashboard (and How to Start)</a></h2>
+            <p class="excerpt">
+              A dashboard puts key metrics—sales, growth, customer data—all in one view. 
+              It saves time and keeps decisions clear. 
+              Learn why dashboards matter and how to build your first one in five simple steps.
+            </p>
+            <div class="meta">
+              <a class="read-more" href="blog6.html">Read more</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>

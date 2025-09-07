@@ -342,6 +342,195 @@ header .container {
 }
 
 /* =========================================================
+   Blog Section
+======================================================== */
+
+/* Theme vars */
+:root{
+  --bg: #fff;
+  --muted: #666;
+  --accent-blue: #2196F3;
+  --accent-green: #4CAF50;
+  --card-border: #eee;
+  --card-shadow: rgba(0,0,0,0.08);
+  --card-shadow-hover: rgba(0,0,0,0.12);
+  --transition-fast: 0.2s;
+  --transition-medium: 0.3s;
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Blog Section Container / Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Blog Card Styling */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  min-height: 100%;
+}
+
+/* Hover effect */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px var(--card-shadow-hover);
+}
+
+/* Thumbnail */
+.thumb {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: block;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body */
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+
+/* Title (trendy link) */
+.card-body h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.card-body h2 a {
+  color: #222;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-medium) ease;
+  outline: none;
+}
+
+.card-body h2 a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+  transition: width var(--transition-medium) ease;
+}
+
+.card-body h2 a:hover,
+.card-body h2 a:focus {
+  color: var(--accent-blue);
+}
+
+.card-body h2 a:hover::after,
+.card-body h2 a:focus::after {
+  width: 100%;
+}
+
+/* Excerpt */
+.excerpt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  flex: 1 1 auto;
+}
+
+/* Meta area (read more only now) */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+/* Read More (fancier) */
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-medium) ease, transform var(--transition-medium) ease;
+  white-space: nowrap;
+}
+
+.read-more::after {
+  content: "➝";
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform var(--transition-medium) ease;
+}
+
+.read-more:hover,
+.read-more:focus {
+  color: var(--accent-green);
+}
+
+.read-more:hover::after,
+.read-more:focus::after {
+  transform: translateX(4px);
+}
+
+/* Accessibility: visible focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(33,150,243,0.18);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .thumb { height: 180px; }
+}
+
+@media (max-width: 600px) {
+  .thumb { height: 160px; }
+  .section-title { font-size: 1.5rem; }
+  .card-body { padding: 14px; }
+}
+
+
+
+
+/* =========================================================
    Contact Section
 ========================================================= */
 .contact {
